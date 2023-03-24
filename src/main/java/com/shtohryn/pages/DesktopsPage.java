@@ -14,31 +14,31 @@ import java.util.List;
 public class DesktopsPage {
     private static final Logger LOG = LoggerFactory.getLogger(DesktopsPage.class);
     @FindBy(name="products-pagesize")
-    Select displayDropdown;
+    private WebElement displayDropdown;
     @FindBy(className="product-item")
-    int numOfProducts;
+    private WebElement numOfProducts;
     @FindBy(id="products-orderby")
-    WebElement sortDropdown;
+    private WebElement sortDropdown;
     @FindBy(xpath = "//div[@class='prices']//span[@class='price actual-price']")
-    WebElement mostExpensiveItem;
+    private WebElement mostExpensiveItem;
     @FindBy(css="div.item-box")
-    List<WebElement> productBlocks;
+    private List<WebElement> productBlocks;
     String button = "//input[@value='Add to cart']";
     @FindBy(css = "span.price.actual-price")
-    WebElement cartItem;
+    private WebElement cartItem;
 
 
     public DesktopsPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
     }
 
-    public int setDisplayNumPerPage(String numPerPage)throws InterruptedException{
+    public void setDisplayNumPerPage(String numPerPage)throws InterruptedException{
         LOG.info("Set Display to \"4\" per page");
-        displayDropdown.selectByVisibleText(numPerPage);
+        Select displayDropdownSelect = new Select(displayDropdown);
+        displayDropdownSelect.selectByVisibleText("4");
         Thread.sleep(1);
-        return numOfProducts;
     }
-    public void sortBtPriceHightoLow(){
+    public void sortBtPriceHighToLow(){
         LOG.info("Sort items \"Price: High to Low\"");
         Select sortSelect = new Select(sortDropdown);
         sortSelect.selectByVisibleText("Price: High to Low");

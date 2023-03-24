@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 public class HomePage {
     private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
     @FindBy(linkText = "Computers")
-    WebElement computersLink;
+    private WebElement computersLink;
     @FindBy(linkText = "Desktops")
-    WebElement desktopsLink;
+    private WebElement desktopsLink;
 
 
     public HomePage(WebDriver webDriver) {
