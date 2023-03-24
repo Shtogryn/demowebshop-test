@@ -51,6 +51,7 @@ class TestDemoWebshop {
         desktopsPage.sortBtPriceHighToLow();
         desktopsPage.getMostExpensiveItem();
         WebElement cartItem = desktopsPage.addToCartFirstItem();
+        LOG.info("Verify that the item is in the shopping cart.");
         assertTrue(cartItem.isDisplayed());
     }
     @Test
