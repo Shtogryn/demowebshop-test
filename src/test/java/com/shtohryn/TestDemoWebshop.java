@@ -1,6 +1,6 @@
 package com.shtohryn;
 
-import com.shtohryn.pages.BuildYourOwnExpensiveComputer;
+import com.shtohryn.pages.BuildYourOwnExpensiveComputerPage;
 import com.shtohryn.pages.DesktopsPage;
 import com.shtohryn.pages.HomePage;
 import org.junit.jupiter.api.AfterAll;
@@ -23,7 +23,7 @@ class TestDemoWebshop {
     private static final Logger LOG = LoggerFactory.getLogger(TestDemoWebshop.class);
     private static HomePage homePage;
     private static DesktopsPage desktopsPage;
-    private static BuildYourOwnExpensiveComputer buildYourOwnExpensiveComputer;
+    private static BuildYourOwnExpensiveComputerPage buildYourOwnExpensiveComputerPage;
 
     @BeforeAll
     static void setup() {
@@ -34,7 +34,7 @@ class TestDemoWebshop {
         driver = new ChromeDriver(chromeOptions);
         homePage = new HomePage(driver);
         desktopsPage = new DesktopsPage(driver);
-        buildYourOwnExpensiveComputer = new BuildYourOwnExpensiveComputer(driver);
+        buildYourOwnExpensiveComputerPage = new BuildYourOwnExpensiveComputerPage(driver);
     }
 
     @Test
@@ -57,12 +57,12 @@ class TestDemoWebshop {
     @Test
     @DisplayName("Add computer to cart and verify cart item")
     void testAddToCart() throws InterruptedException {
-        buildYourOwnExpensiveComputer.setProcessorFast();
-        buildYourOwnExpensiveComputer.setMaxRam();
-        buildYourOwnExpensiveComputer.selectAllAvailableSoftware();
-        String message = buildYourOwnExpensiveComputer.addToCart();
-        String cartCount = buildYourOwnExpensiveComputer.getCartCount();
-        WebElement cartItem = buildYourOwnExpensiveComputer.getCartItem();
+        buildYourOwnExpensiveComputerPage.setProcessorFast();
+        buildYourOwnExpensiveComputerPage.setMaxRam();
+        buildYourOwnExpensiveComputerPage.selectAllAvailableSoftware();
+        String message = buildYourOwnExpensiveComputerPage.addToCart();
+        String cartCount = buildYourOwnExpensiveComputerPage.getCartCount();
+        WebElement cartItem = buildYourOwnExpensiveComputerPage.getCartItem();
 
         LOG.info("Verify that the alert message is 'The product has been added to your shopping cart'");
         assertEquals(message, "The product has been added to your shopping cart");
@@ -73,7 +73,7 @@ class TestDemoWebshop {
         LOG.info("Verify that Cart item is displayed");
         assertTrue(cartItem.isDisplayed(), "Cart item should be displayed");
 
-        buildYourOwnExpensiveComputer.removeItemFromShopCart();
+        buildYourOwnExpensiveComputerPage.removeItemFromShopCart();
     }
     @AfterAll
     static void tearDown() {

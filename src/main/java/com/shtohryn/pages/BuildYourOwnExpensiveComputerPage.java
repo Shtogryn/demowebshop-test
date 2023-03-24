@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BuildYourOwnExpensiveComputer {
-    private static final Logger LOG = LoggerFactory.getLogger(BuildYourOwnExpensiveComputer.class);
+public class BuildYourOwnExpensiveComputerPage {
+    private static final Logger LOG = LoggerFactory.getLogger(BuildYourOwnExpensiveComputerPage.class);
     @FindBy(id="product_attribute_74_5_26_82")
     private WebElement fastProcessorOption;
     @FindBy(xpath="//input[@id='product_attribute_74_6_27_85']")
@@ -34,7 +34,7 @@ public class BuildYourOwnExpensiveComputer {
     @FindBy(xpath="//input[@name='updatecart']")
     private WebElement updateShoppingCartButtom;
 
-    public BuildYourOwnExpensiveComputer(WebDriver webDriver) {
+    public BuildYourOwnExpensiveComputerPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
     }
     public void setProcessorFast() throws InterruptedException{
